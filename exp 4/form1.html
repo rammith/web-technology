@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style> 
+    table td,th{
+      padding:10px;
+      background-color: #ffffff;
+      color: #06c2d7;
+    }
+    table{
+      margin: auto;
+    }
+    h2{
+      text-align: center;
+    }
+    .tr1{
+      text-align: center;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h2>USER REGISTRATION FORM</h2>
+  <form id="registrationForm">
+    <table>
+      <tr>
+        <th>Name</th>
+        <td><input type="text" id="fullname" class="fullname"></td>
+        <td><div class="error" id="nameError"></div></td>
+      </tr>
+      <tr>
+        <th>Gender</th>
+        <td><input type="radio" id="male" name="gender">Male
+        <input type="radio" id="female" name="gender">Female
+        <input type="radio" id="other" name="gender">Other</td>
+        <td><div class="error" id="genderError"></div></td>
+      </tr>
+      <tr>
+        <th>Languages known</th>
+        <td><input type="checkbox" id="tamil">Tamil
+        <input type="checkbox" id="english">English
+        <input type="checkbox" id="hindi">Hindi</td>
+        <td><div class="error" id="languagesError"></div></td>
+      </tr>
+      <tr>
+        <th>Select District</th>
+        <td><select id="district">
+          <option value="">Select District</option>
+          <option value="namakkal">Namakkal</option>
+          <option value="erode">Erode</option>
+          <option value="chennai">Chennai</option>
+          <option value="coimbatore">Coimbatore</option>
+          <option value="madurai">Madurai</option>
+          <option value="salem">Salem</option>
+        </select></td>
+        <td><div class="error" id="districtError"></div></td>
+      </tr>
+      <tr>
+        <th>Address</th>
+        <td><textarea id="address" rows="4" cols="20"></textarea></td>
+        <td><div class="error" id="addressError"></div></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><input type="text" id="email"></td>
+        <td><div class="error" id="emailError"></div></td>
+      </tr>
+      <tr>
+        <th>Mobile No</th>
+        <td><input type="text" id="phone"></td>
+        <td><div class="error" id="phoneError"></div></td>
+      </tr>
+      <tr>
+        <th>Username</th>
+        <td><input type="text" id="username"></td>
+        <td><div class="error" id="usernameError"></div></td>
+      </tr>
+      <tr>
+        <th>Password</th>
+        <td><input type="password" id="password"></td>
+        <td><div class="error" id="passwordError"></div></td>
+      </tr>
+      <tr class="tr1">
+        <td colspan="2"><button style="color: #f00db4;">Submit</button></td>
+      </tr>
+    </table>
+  </form>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+      
+      // Perform validation
+      var isValid = validateForm();
+
+      // If form is valid, you can proceed with form submission or other actions
+      if (isValid) {
+        // Here you can submit the form using AJAX or perform any other actions
+        alert("Form submitted successfully!");
+      }
+    });
+
+    function validateForm() {
+      var isValid = true;
+
+      // Regular expressions for validation
+      var nameRegex = /^[a-zA-Z]+(\s[a-zA-Z]+)*$/;
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      var phoneRegex = /^\d{10}$/;
+      var usernameRegex = /^[a-zA-Z0-9]{3,20}$/;
+      var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+
+      // Validate Name
+      var nameField = document.getElementById("fullname");
+      var nameError = document.getElementById("nameError");
+      if (!nameField.value.trim()) {
+        nameError.textContent = "Please fill the field";
+        isValid = false;
+      } else if (!nameRegex.test(nameField.value.trim())) {
+        nameError.textContent = "Invalid name";
+        isValid = false;
+      } else {
+        nameError.textContent = "";
+      }
+
+      // Validate Gender
+      var genderField = document.querySelector('input[name="gender"]:checked');
+      var genderError = document.getElementById("genderError");
+      if (!genderField) {
+        genderError.textContent = "Please fill the field";
+        isValid = false;
+      } else {
+        genderError.textContent = "";
+      }
+
+      // Validate Languages Known
+      var tamilChecked = document.getElementById("tamil").checked;
+      var englishChecked = document.getElementById("english").checked;
+      var hindiChecked = document.getElementById("hindi").checked;
+      var languagesError = document.getElementById("languagesError");
+      if (!tamilChecked && !englishChecked && !hindiChecked) {
+        languagesError.textContent = "Please fill the field";
+        isValid = false;
+      } else {
+        languagesError.textContent = "";
+      }
+
+      // Validate Select District
+      var districtField = document.getElementById("district");
+      var districtError = document.getElementById("districtError");
+      if (!districtField.value.trim()) {
+        districtError.textContent = "Please fill the field";
+        isValid = false;
+      } else {
+        districtError.textContent = "";
+      }
+
+      // Validate Address
+      var addressField = document.getElementById("address");
+      var addressError = document.getElementById("addressError");
+      if (!addressField.value.trim()) {
+        addressError.textContent = "Please fill the field";
+        isValid = false;
+      } else {
+        addressError.textContent = "";
+      }
+
+      // Validate Email
+      var emailField = document.getElementById("email");
+      var emailError = document.getElementById("emailError");
+      if (!emailField.value.trim()) {
+        emailError.textContent = "Please fill the field";
+        isValid = false;
+      } else if (!emailRegex.test(emailField.value.trim())) {
+        emailError.textContent = "Invalid email";
+        isValid = false;
+      } else {
+        emailError.textContent = "";
+      }
+
+      // Validate Phone
+      var phoneField = document.getElementById("phone");
+      var phoneError = document.getElementById("phoneError");
+      if (!phoneField.value.trim()) {
+        phoneError.textContent = "Please fill the field";
+        isValid = false;
+      } else if (!phoneRegex.test(phoneField.value.trim())) {
+        phoneError.textContent = "Invalid phone number";
+        isValid = false;
+      } else {
+        phoneError.textContent = "";
+      }
+
+      // Validate username
+      var usernameField = document.getElementById("username");
+      var usernameError = document.getElementById("usernameError");
+      if (!usernameField.value.trim()) {
+        usernameError.textContent = "Please fill the field";
+        isValid = false;
+      } else if (!usernameRegex.test(usernameField.value.trim())) {
+        usernameError.textContent = "Invalid username";
+        isValid = false;
+      } else {
+        usernameError.textContent = "";
+      }
+
+      // Validate password
+      var passwordField = document.getElementById("password");
+      var passwordError = document.getElementById("passwordError");
+      if (!passwordField.value.trim()) {
+        passwordError.textContent = "Please fill the field";
+        isValid = false;
+      } else if (!passwordRegex.test(passwordField.value.trim())) {
+        passwordError.textContent = "Invalid password";
+        isValid = false;
+      } else {
+        passwordError.textContent = "";
+      }
+
+      return isValid;
+    }
+  </script>
+</body>
+</html>
