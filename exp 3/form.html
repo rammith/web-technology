@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Tax Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #0a0a0a;
+        }
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: #41b5d2;
+            box-shadow: 0px 0px 10px rgba(157, 159, 157, 0.1);
+            border-radius: 10px;
+        }
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #060606;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            color: #070606;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Income Tax Calculator</h1>
+        <!-- Input Section -->
+        <form id="incomeTaxForm">
+            <!-- Basic Details -->
+            <h2>Basic Details</h2>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required>
+                <div id="nameError" class="error-message" style="display:none;">Please enter a valid name (only text).</div>
+            </div>
+            <div class="form-group">
+                <label for="pan">PAN Number</label>
+                <input type="text" class="form-control" id="pan" required>
+                <div id="panError" class="error-message" style="display:none;">Please enter a valid PAN number (12 digits).</div>
+            </div>
+            <!-- Income Details -->
+            <h2>Income Details</h2>
+            <div class="form-group">
+                <label for="salary">Income From Salary</label>
+                <input type="number" class="form-control" id="salary" required>
+            </div>
+            <div class="form-group">
+                <label for="rent">Income From Rent</label>
+                <input type="number" class="form-control" id="rent" required>
+            </div>
+            <div class="form-group">
+                <label for="otherIncomes">Income from other sources</label>
+                <input type="number" class="form-control" id="otherIncomes" required>
+            </div>
+            <!-- Deductions -->
+            <h2>Deductions</h2>
+            <div class="form-group">
+                <label for="deductionType">Deduction Type</label>
+                <select class="form-control" id="deductionType" required>
+                    <option value="">Select Deduction Type</option>
+                    <option value="insurance">Insurance</option>
+                    <option value="tuition">Tuition Fees</option>
+                    <option value="other">Other Deductions</option>
+                </select>
+            </div>
+            <div class="form-group" id="deductionAmount" style="display: none;">
+                <label for="deductionAmountValue">Deduction Amount</label>
+                <input type="number" class="form-control" id="deductionAmountValue">
+            </div>
+            <!-- Generate Bill Button -->
+            <button type="button" onclick="generateBill()" class="btn btn-primary">Submit</button>
+        </form>
+        <!-- Results Section -->
+        <div id="results" style="display: none;">
+            <h2 class="mt-5">Tax Summary</h2>
+            <div class="form-group">
+                <label for="outputName">Name</label>
+                <input type="text" class="form-control" id="outputName" readonly>
+            </div>
+            <div class="form-group">
+                <label for="outputPAN">PAN Number</label>
+                <input type="text" class="form-control" id="outputPAN" readonly>
+            </div>
+            <div class="form-group">
+                <label for="outputSalary">Income From Salary</label>
+                <input type="text" class="form-control" id="outputSalary" readonly>
+            </div>
+            <div class="form-group">
+                <label for="outputRent">Income From Rent</label>
+                <input type="text" class="form-control" id="outputRent" readonly>
+            </div>
+            <div class="form-group">
+                <label for="outputOtherIncomes">Income from other sources</label>
+                <input type="text" class="form-control" id="outputOtherIncomes" readonly>
+            </div>
+            <div class="form-group">
+                <label for="taxPayable">Tax Payable</label>
+                <input type="text" class="form-control" id="taxPayable" readonly>
+            </div>
+            <!-- Add more fields here for other tax details if needed -->
+        </div>
+    </div>
+    <!-- Custom JS -->
+    <script>
+        function validateName() {
+            var nameInput = document.getElementById('name');
+            var nameError = document.getElementById('nameError');
+            var namePattern = /^[A-Za-z ]+$/;
+            if (!namePattern.test(nameInput.value)) {
+                nameError.style.display = 'block';
+                return false;
+            } else {
+                nameError.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validatePAN() {
+            var panInput = document.getElementById('pan');
+            var panError = document.getElementById('panError');
+            var panPattern = /^[0-9]{12}$/;
+            if (!panPattern.test(panInput.value)) {
+                panError.style.display = 'block';
+                return false;
+            } else {
+                panError.style.display = 'none';
+                return true;
+            }
+        }
+
+        function generateBill() {
+            // Validate inputs
+            var isNameValid = validateName();
+            var isPANValid = validatePAN();
+
+            if (!isNameValid || !isPANValid) {
+                return;
+            }
+
+            // Get input values
+            var salary = parseFloat(document.getElementById('salary').value) || 0;
+            var rent = parseFloat(document.getElementById('rent').value) || 0;
+            var otherIncomes = parseFloat(document.getElementById('otherIncomes').value) || 0;
+            var deductionType = document.getElementById('deductionType').value;
+            var deductionAmount = parseFloat(document.getElementById('deductionAmountValue').value) || 0;
+
+            
+            document.getElementById('outputSalary').value = salary.toFixed(2);
+            document.getElementById('outputRent').value = rent.toFixed(2);
+            document.getElementById('outputOtherIncomes').value = otherIncomes.toFixed(2);
+
+            
+            var totalIncome = salary + rent + otherIncomes;
+
+            
+            var totalDeduction = 0;
+            switch(deductionType) {
+                case 'insurance':
+                    totalDeduction = deductionAmount;
+                    break;
+                case 'tuition':
+                    totalDeduction = deductionAmount;
+                    break;
+                case 'other':
+                    totalDeduction = deductionAmount;
+                    break;
+                default:
+                    break;
+            }
+
+            
+            var taxableIncome = totalIncome - totalDeduction;
+
+            
+            var taxPayable = taxableIncome * 0.1;
+
+            
+            document.getElementById('outputName').value = document.getElementById('name').value;
+            document.getElementById('outputPAN').value = document.getElementById('pan').value;
+            document.getElementById('taxPayable').value = taxPayable.toFixed(2);
+
+    
+            document.getElementById('results').style.display = 'block';
+        }
+
+        
+        document.getElementById('deductionType').addEventListener('change', function() {
+            var deductionType = this.value;
+            if (deductionType === 'insurance' || deductionType === 'tuition' || deductionType === 'other') {
+                document.getElementById('deductionAmount').style.display = 'block';
+            } else {
+                document.getElementById('deductionAmount').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>/
