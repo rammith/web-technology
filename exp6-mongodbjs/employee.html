@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form (GET)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        #form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>EMPLOYEE DETAILS</h1>
+    <form id="form" method="get">
+        <label for="username">EMPLOYEE NAME:</label>
+        <input type="text" id="username" name="username" value=""><br>
+       
+        <label for="id">EMPLOYEE ID:</label>
+        <input type="text" id="id" name="id" value=""><br>
+       
+        <label for="branch">BRANCH:</label>
+        <select id="branch" name="branch">
+            <option value="select">Select any one Branch</option>
+            <option value="Headquarters">Headquarters</option>
+            <option value="Development">Development</option>
+            <option value="Quality Assurance">Quality Assurance</option>
+            <option value="Customer Support">Customer Support</option>
+            <option value="Sales">Sales</option>
+        </select><br>
+       
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male">
+        <label for="male" class="radio-label" style="font-weight: lighter;">Male</label>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label class="radio-label" style="font-weight: lighter;">Female</label><br><br>
+
+        <label for="phno">MOBILE NO:</label>
+        <input type="text" id="phno" name="phno" value=""><br>
+       
+        <label for="branchadd">BRANCH ADDRESS:</label>
+        <input type="text" id="branchadd" name="branchadd" value=""><br>
+       
+        <button type="submit" onclick="set('/insert', event)">Insert</button>
+        <button type="submit" onclick="set('/delete', event)">Delete</button>
+        <button type="submit" onclick="set('/update', event)">Update</button>
+        <button type="submit" onclick="set('/display', event)">Report</button>
+
+    </form>
+
+    <script>
+        function set(path, event) {
+            event.preventDefault(); // Prevent default form submission behavior
+            document.getElementById('form').action = 'http://localhost:7050' + path;
+            document.getElementById('form').submit(); // Submit the form after setting the action
+        }
+    </script>
+</body>
+</html>
