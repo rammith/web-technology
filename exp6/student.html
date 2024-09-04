@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Registration Form</title>
+
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #e0f7fa; /* Light cyan background */
+  }
+
+  h2 {
+    text-align: center;
+    color: #006064; /* Dark cyan text */
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  form {
+    max-width: 500px;
+    margin: auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 1px solid #b0bec5; /* Light gray border */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Drop shadow */
+  }
+
+  label {
+    font-weight: bold;
+    color: #004d40; /* Dark teal text */
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #b0bec5; /* Light gray border */
+    border-radius: 6px;
+    background-color: #f5f5f5; /* Light gray background */
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+
+  .checkbox-label {   
+    align-items: center;
+    margin-right: 15px;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 5px;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #26a69a; /* Teal button background */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #00796b; /* Darker teal on hover */
+  }
+
+  select {
+    background-color: white;
+  }
+
+  .error {
+    color: red;
+  }
+  .container1 {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    margin: 0 10px; /* Adjust spacing between buttons */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+</style>
+
+</head>
+<body>
+<h2>Student Registration Form</h2>
+<form id="form" method="get">
+    <label for="username">Name:</label><br>
+    <input type="text" id="username" name="username"><br>
+
+    <label for="rollNo">Roll No:</label><br>
+    <input type="text" id="rollNo" name="rollNo"><br>
+
+    <label for="gender">Gender:</label><br>
+    <select id="gender" name="gender">
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+    </select><br>
+
+    <label for="mobile">Mobile Number:</label><br>
+    <input type="text" id="mobile" name="mobile"><br>
+
+    <label for="email">Email Address:</label><br>
+    <input type="email" id="email" name="email"><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br>
+
+<br>
+
+    <div class="container1">
+      <button type="submit" onclick="set('/insert', event)">Insert</button>
+      <button type="submit" onclick="set('/delete', event)">Delete</button>
+      <button type="submit" onclick="set('/update', event)">Update</button>
+      <button type="submit" onclick="set('/display', event)">Report</button>
+    </div>
+</form>
+      <script>
+        function set(path, event) {
+            event.preventDefault(); // Prevent default form submission behavior
+            document.getElementById('form').action = 'http://localhost:7050' + path;
+            document.getElementById('form').submit(); // Submit the form after setting the action
+        }
+      </script>
+</body>
+</html>
