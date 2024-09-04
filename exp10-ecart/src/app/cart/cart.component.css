@@ -1,0 +1,57 @@
+/* Basic CSS for the Cart Page */
+
+/* Style for the cart container */
+.cart-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Style for the empty cart message */
+  .cart-container p {
+    font-size: 1.2em;
+    color: #555;
+    text-align: center;
+  }
+  
+  /* Style for each cart item */
+  .cart-item {
+    margin: 20px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Style for the item name */
+  .cart-item h2 {
+    font-size: 1.5em;
+    margin: 0;
+    color: #333;
+  }
+  
+  /* Style for the item price */
+  .cart-item p {
+    font-size: 1.2em;
+    color: #888;
+  }
+  
+  /* Style for the clear cart button */
+  .clear-cart-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #ff4500;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  
+  .clear-cart-button:hover {
+    background-color: #ff4500;
+  }
+  

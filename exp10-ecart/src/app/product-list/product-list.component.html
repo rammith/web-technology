@@ -1,0 +1,38 @@
+<div class="product-list">
+  <div class="product-card">
+    <img src="./assets/image/s3.jpg" alt="Classic Leather" class="product-image" />
+    <h2>Classic Leather</h2>
+    <p>Made out of premium leather</p>
+    <p>Rs. 3299</p>
+    <button (click)="addToCart({id: 1, name: 'Classic Leather', price: 3299, description: 'Description for Product 1', imageUrl: 'assets/images/headset.webp'})" class="button-1">Add to Cart</button>
+  </div>
+  
+  <div class="product-card">
+    <img src="./assets/image/sports" alt="Running Shoes" class="product-image" />
+    <h2>Running Shoes</h2>
+    <p>Make your running easy and comfortable</p>
+    <p>Rs. 1999</p><br><br><br>
+    <button (click)="addToCart({id: 9, name: 'Running Shoes', price: 1999, description: 'Description for Product 9', imageUrl: 'https://via.placeholder.com/150'})" class="button-1">Add to Cart</button>
+  </div>
+  
+  <div class="product-card">
+    <img src="./assets/image/snekerwite.png" alt="Sneakers" class="product-image" />
+    <h2>Sneakers</h2>
+    <p>Match any style with a pair of Sneakers</p>
+    <p>Rs. 1899</p>
+    <button (click)="addToCart({id: 5, name: 'Sneakers', price: 1899, description: 'Description for Product 5', imageUrl: 'https://via.placeholder.com/150'})" class="button-1">Add to Cart</button>
+  </div>
+  
+  <div class="product-card">
+    <img src="./assets/image/s2.jpg" alt="Bata Retro" class="product-image" />
+    <h2>Bata Retro</h2>
+    <p>Never get out of style with a pair of these</p>
+    <p>Rs. 999</p>
+    <button (click)="addToCart({id: 4, name: 'Bata Retro', price: 999, description: 'Description for Product 4', imageUrl: 'https://s.alicdn.com/@sc04/kf/Hd521db5e65a74fbd90100ff61e1c5f840.jpg_720x720q50.jpg'})" class="button-1">Add to Cart</button>
+  </div>
+  
+  <!-- Message Display -->
+  <div *ngIf="showMessage" class="message">
+    Added to cart
+  </div>
+</div>

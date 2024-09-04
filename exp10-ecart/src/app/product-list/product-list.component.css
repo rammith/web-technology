@@ -1,0 +1,74 @@
+/* src/app/product-list/product-list.component.css */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product-card {
+  padding: 20px;
+  width: calc(25% - 40px); /* Adjust to display 4 products per row */
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 20px 0; /* Add vertical margin for spacing */
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.product-card button {
+  color: #ffffff;
+  background-color: #000000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+  background-color:#ff4500;
+}
+.message {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text */
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000; /* Ensure it is on top of other elements */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.message.ng-enter {
+  opacity: 0;
+}
+
+.message.ng-enter-active {
+  opacity: 1;
+}
+
+.message.ng-leave {
+  opacity: 1;
+}
+
+.message.ng-leave-active {
+  opacity: 0;
+}

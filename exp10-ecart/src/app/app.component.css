@@ -1,0 +1,40 @@
+/* src/styles.css */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    background-color: #1a1a1a;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar .nav-link {
+    float: left;
+    display: block;
+    color: #f1f1f1;
+    text-align: center;
+    padding: 16px 20px;
+    text-decoration: none;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .navbar .nav-link:hover {
+    background-color: #575757;
+    color: #ffffff;
+  }
+  
+  .navbar .nav-link.active {
+    background-color: #333333;
+    color: #ffffff;
+  }
+  
+  .navbar .nav-link:focus {
+    outline: none;
+    background-color: #575757;
+    color: #ffffff;
+  }
+  

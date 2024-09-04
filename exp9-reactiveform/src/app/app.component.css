@@ -1,0 +1,118 @@
+/* Styles for the form container */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for form paragraphs */
+form p {
+  margin-bottom: 1.5em;
+}
+
+/* Styles for labels */
+label {
+  display: block;
+  margin-bottom: 0.75em;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+/* Styles for input fields */
+input[type="text"],
+select {
+  width: calc(100% - 24px);
+  padding: 12px;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* Styles for radio buttons and checkboxes */
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Styles for validation messages */
+b {
+  display: block;
+  margin-top: 0.5em;
+  color: red;
+}
+
+/* Styles for the submit button */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Styles for disabled submit button */
+button[type="submit"][disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Styles for the table */
+table {
+  width: 100%;
+  margin-top: 2em;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+/* Additional responsive design */
+@media (max-width: 600px) {
+  form {
+    padding: 15px;
+  }
+
+  input[type="text"],
+  select,
+  button[type="submit"] {
+    width: calc(100% - 20px);
+  }
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Spacing between checkboxes */
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap; /* Adjust as needed */
+  align-items: center;
+}
+
+.checkbox-group .checkbox-container {
+  margin-bottom: 0; /* Remove margin bottom for single line layout */
+}
