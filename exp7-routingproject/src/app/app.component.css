@@ -1,0 +1,24 @@
+/* General styles for the toolbar */
+.toolbar {
+    background-color: #333; /* Dark background color */
+    padding: 10px 20px; /* Some padding for spacing */
+  }
+  
+  /* Styles for the navigation bar */
+  .toolbar nav {
+    display: inline-block; /* Make nav inline-block for better control */
+  }
+  
+  /* Styles for the links */
+  .toolbar nav a {
+    color: #fff; /* White text color */
+    text-decoration: none; /* Remove underline from links */
+    margin: 0 15px; /* Space between links */
+    font-size: 16px; /* Font size for links */
+  }
+  
+  /* Hover effect for links */
+  .toolbar nav a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  

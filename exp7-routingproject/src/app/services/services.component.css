@@ -1,0 +1,43 @@
+/* Add a container for the cards */
+.card-container {
+  display:inline-flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Optional: adds space between the cards */
+  justify-content: space-around; /* Adjust the alignment of cards */
+  padding: 1rem; /* Optional: adds padding around the container */
+}
+
+.card {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+  width: calc(33.333% - 2rem); /* Adjust the width as needed */
+}
+
+.card:hover {
+  box-shadow: 15px 15px 15px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: #555;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
